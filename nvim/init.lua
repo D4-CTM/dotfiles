@@ -16,7 +16,7 @@ setKey("n", "<leader>w", ":write<CR>")
 setKey("n", "<leader>q", ":quit<CR>")
 setKey("n", "<leader>gb", ":Oil<CR>")
 setKey("n", "<leader>ff", ":FzfLua files<CR>")
-setKey("n", "<leader>gf", ":FzfLua live_grep<CR>")
+setKey("n", "<leader>fg", ":FzfLua live_grep<CR>")
 setKey("v", "J", ":m '>+1<CR>gv=gv")
 setKey("v", "K", ":m '<-2<CR>gv=gv")
 setKey("n", "r", ":redo<CR>")
@@ -78,13 +78,26 @@ vim.pack.add({
 
 require("oil").setup()
 require("mason").setup()
-require("blink.cmp").setup({
+local blink = require("blink.cmp")
+blink.setup({
 	fuzzy = {
 		implementation = "prefer_rust",
 		prebuilt_binaries = {
 			force_version = "1.*"
 		}
-	}
+	},
+	keymap = {
+		['<Tab>'] = {
+			function()
+				if blink.is_visible() then
+					blink.select_and_accept()
+				else
+					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
+				end
+			end,
+			mode = { 'i' },
+		}
+	},
 })
 
 require("nvim-treesitter.configs").setup({

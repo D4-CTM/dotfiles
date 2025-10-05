@@ -26,6 +26,7 @@ function createSymLink {
 createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
 createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
+createSymLink $HOME/dotfiles/wired/ ~/.config/wired
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
 createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
