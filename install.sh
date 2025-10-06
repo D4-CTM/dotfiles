@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function createSymLink {
-	if [ -L "$2" ]; then
+	if [[ -L "$2" ]]; then
 		echo "$2 is already a symlink"
 		return
 	fi
 
-	if [ -e "$2" ]; then
+	if [[ -e "$2" ]]; then
 		echo "$2 already exists."
 		read -p "Do you want to replace it? [y/N] " yn
 		case $yn in
@@ -29,8 +29,5 @@ createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/wired/ ~/.config/wired
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
 createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+createSymLink $HOME/dotfiles/hypr/gtk-3.0 ~/.config/gtk-3.0
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
-
-# echo "Copying ocean-theme into /usr/share/sounds/"
-# cp -r ./ocean-theme/ /usr/share/sounds/ocean-sound-theme/
-
