@@ -67,6 +67,7 @@ end)
 -- packages
 vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", name = "treesitter" },
+	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
 	{ src = "https://github.com/Saghen/blink.cmp",                name = "blink-cmp" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
 	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
@@ -78,6 +79,9 @@ vim.pack.add({
 
 require("oil").setup()
 require("mason").setup()
+require("markview").setup({
+	lazy = false
+})
 local blink = require("blink.cmp")
 blink.setup({
 	fuzzy = {
