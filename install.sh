@@ -23,11 +23,20 @@ function createSymLink {
 	ln -s "$1" "$2"
 }
 
-createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
+
+
+case $1 in
+	[hypr] )
+		echo "Creating symlinks for hyprland"	
+		createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
+		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+	;;
+esac
+
 createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
-createSymLink $HOME/dotfiles/wired/ ~/.config/wired
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
-createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
 createSymLink $HOME/dotfiles/hypr/gtk-3.0 ~/.config/gtk-3.0
+createSymLink $HOME/dotfiles/VALYRIAN-Total-Steel/ ~/.themes
+
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
