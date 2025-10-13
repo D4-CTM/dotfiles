@@ -1,0 +1,36 @@
+{
+  "plugins": {
+    "blink-cmp": {
+      "rev": "ddeab4c",
+      "src": "https://github.com/Saghen/blink.cmp"
+    },
+    "fzf-lua": {
+      "rev": "db3ccff",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "lualine": {
+      "rev": "b8c2315",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "markview": {
+      "rev": "2f5d568",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
+    "mason": {
+      "rev": "ad7146a",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "oil": {
+      "rev": "919e155",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "onedark": {
+      "rev": "de495fa",
+      "src": "https://github.com/navarasu/onedark.nvim"
+    },
+    "treesitter": {
+      "rev": "42fc28ba",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    }
+  }
+}

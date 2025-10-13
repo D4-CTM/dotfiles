@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(printf "  Power Off\n  Reboot\n  Suspend\n  Lock\n  Logout" | wofi --dmenu --prompt "Power Menu")
+chosen=$(printf "  Power Off\n  Reboot\n  Suspend\n" | wofi --dmenu --prompt "Power Menu")
 
 case "$chosen" in
     "  Power Off") systemctl poweroff ;;

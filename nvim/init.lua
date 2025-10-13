@@ -77,8 +77,8 @@ vim.pack.add({
 })
 
 
-require("oil").setup()
 require("mason").setup()
+require("oil").setup()
 require("markview").setup({
 	lazy = false
 })

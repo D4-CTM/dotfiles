@@ -26,17 +26,19 @@ function createSymLink {
 
 
 case $1 in
-	[hypr] )
+	"hypr" )
 		echo "Creating symlinks for hyprland"	
 		createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
 		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+		createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
+	;;
+	"gnome" )
+		echo "Creating simlinks for gnome"
+		createSymLink $HOME/dotfiles/ulauncher/ ~/.config/ulauncher
 	;;
 esac
 
-createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
-createSymLink $HOME/dotfiles/hypr/gtk-3.0 ~/.config/gtk-3.0
-createSymLink $HOME/dotfiles/VALYRIAN-Total-Steel/ ~/.themes
 
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
