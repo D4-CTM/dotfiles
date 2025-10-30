@@ -4,6 +4,10 @@
       "rev": "ddeab4c",
       "src": "https://github.com/Saghen/blink.cmp"
     },
+    "copilot": {
+      "rev": "da369d9",
+      "src": "https://github.com/github/copilot.vim"
+    },
     "fzf-lua": {
       "rev": "db3ccff",
       "src": "https://github.com/ibhagwan/fzf-lua"
@@ -28,9 +32,17 @@
       "rev": "de495fa",
       "src": "https://github.com/navarasu/onedark.nvim"
     },
+    "spectre": {
+      "rev": "72f56f7",
+      "src": "https://github.com/nvim-pack/nvim-spectre"
+    },
     "treesitter": {
       "rev": "42fc28ba",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "typst": {
+      "rev": "64469f8",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
     }
   }
 }

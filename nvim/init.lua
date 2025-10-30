@@ -27,7 +27,7 @@ vim.keymap.set("n", "<leader>lg", function()
 
 	vim.ui.input({ prompt = "Input file pattern: " }, function(input)
 		if input == nil or input == "" then
-			vim.notify("File extension was empty", "error")
+			vim.notify("File extension was empty", vim.log.levels.ERROR)
 			return
 		end
 
@@ -37,11 +37,10 @@ vim.keymap.set("n", "<leader>lg", function()
 	end)
 end)
 
--- lsp
-
 vim.lsp.enable({
 	"arduino_language_server",
 	"omnisharp",
+	"tinymist",
 	"lemminx",
 	"lua_ls",
 	"clangd",
@@ -54,28 +53,45 @@ vim.lsp.enable({
 })
 
 setKey("n", "F", vim.lsp.buf.format)
-setKey("n", "<leader>e", vim.diagnostic.open_float)
+setKey("n", "<leader>d", vim.diagnostic.open_float)
 setKey("n", "<leader>gd", vim.lsp.buf.definition)
 setKey("n", "?", vim.lsp.buf.hover)
+
+local function jump(_count, _severity)
+	if _severity == nil then
+		vim.diagnostic.jump({ count = _count, float = true, wrap = true })
+		return
+	end
+	vim.diagnostic.jump({ count = _count, float = true, wrap = true, severity = _severity })
+end
+
+setKey("n", "<e", function()
+	jump(-1, vim.diagnostic.severity.ERROR)
+end)
+setKey("n", ">e", function()
+	jump(1, vim.diagnostic.severity.ERROR)
+end)
 setKey("n", "<d", function()
-	vim.diagnostic.jump({ count = -1, float = true, wrap = true })
+	jump(-1, nil)
 end)
 setKey("n", ">d", function()
-	vim.diagnostic.jump({ count = 1, float = true, wrap = true })
+	jump(1, nil)
 end)
 
 -- packages
 vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", name = "treesitter" },
-	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
 	{ src = "https://github.com/Saghen/blink.cmp",                name = "blink-cmp" },
+	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
+	{ src = "https://github.com/nvim-pack/nvim-spectre",          name = "spectre" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
 	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
 	{ src = "https://github.com/navarasu/onedark.nvim",           name = "onedark" },
+	{ src = "https://github.com/github/copilot.vim",              name = "copilot" },
 	{ src = "https://github.com/mason-org/mason.nvim",            name = "mason" },
+	{ src = "https://github.com/chomosuke/typst-preview.nvim",    name = "typst" },
 	{ src = "https://github.com/stevearc/oil.nvim",               name = "oil" },
 })
-
 
 require("mason").setup()
 require("oil").setup()
@@ -91,12 +107,12 @@ blink.setup({
 		}
 	},
 	keymap = {
-		['<Tab>'] = {
+		['<S-tab>'] = {
 			function()
 				if blink.is_visible() then
 					blink.select_and_accept()
 				else
-					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
+					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-tab>", true, false, true), "n", true)
 				end
 			end,
 			mode = { 'i' },
@@ -109,6 +125,10 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"lua",
 		"zig",
+		"json",
+		"yaml",
+		"javascript",
+		"typescript",
 	},
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -136,3 +156,9 @@ require("lualine").setup({
 		theme = "onedark",
 	},
 })
+
+vim.defer_fn(
+	function()
+		vim.cmd([[Copilot disable]])
+	end, 100
+)
