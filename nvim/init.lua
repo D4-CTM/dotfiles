@@ -1,4 +1,4 @@
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
 vim.opt.number = true
