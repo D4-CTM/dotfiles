@@ -8,10 +8,16 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.o.wrap = false
 
+vim.g.have_nerd_font = true
 vim.g.mapleader = " "
 
 -- remaps
 local setKey = vim.keymap.set
+setKey("n", "<leader>zh", ":Gitsigns reset_hunk<CR>")
+setKey("n", "<leader>rh", ":Gitsigns preview_hunk<CR>")
+setKey("n", "<leader>vh", ":Gitsigns preview_hunk_inline<CR>")
+setKey("n", ">h", ":Gitsigns next_hunk<CR>")
+setKey("n", "<h", ":Gitsigns prev_hunk<CR>")
 setKey("n", "<leader>w", ":write<CR>")
 setKey("n", "<leader>q", ":quit<CR>")
 setKey("n", "<leader>gb", ":Oil<CR>")
@@ -83,6 +89,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", name = "treesitter" },
 	{ src = "https://github.com/Saghen/blink.cmp",                name = "blink-cmp" },
 	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim",         name = "gitsigns" },
 	{ src = "https://github.com/nvim-pack/nvim-spectre",          name = "spectre" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
 	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
@@ -95,6 +102,7 @@ vim.pack.add({
 
 require("mason").setup()
 require("oil").setup()
+require("gitsigns").setup()
 require("markview").setup({
 	lazy = false
 })

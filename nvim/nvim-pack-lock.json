@@ -12,6 +12,10 @@
       "rev": "db3ccff",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "gitsigns": {
+      "rev": "20ad441",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "lualine": {
       "rev": "b8c2315",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
