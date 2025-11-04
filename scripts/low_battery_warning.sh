@@ -7,7 +7,6 @@ while true; do
 	if [[ $state == "discharging" && $level -le 15 ]]; then
 		swayosd-client --custom-icon="battery-caution" --custom-message="low bater: $level%"
 		paplay $HOME/dotfiles/sound-theme/stereo/battery-low.oga
-		echo "low battery"
 	fi
 
 	sleep 60
