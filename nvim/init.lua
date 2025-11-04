@@ -94,7 +94,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
 	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
 	{ src = "https://github.com/navarasu/onedark.nvim",           name = "onedark" },
-	{ src = "https://github.com/github/copilot.vim",              name = "copilot" },
 	{ src = "https://github.com/mason-org/mason.nvim",            name = "mason" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim",    name = "typst" },
 	{ src = "https://github.com/stevearc/oil.nvim",               name = "oil" },
@@ -164,9 +163,3 @@ require("lualine").setup({
 		theme = "onedark",
 	},
 })
-
-vim.defer_fn(
-	function()
-		vim.cmd([[Copilot disable]])
-	end, 100
-)
