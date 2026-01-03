@@ -40,5 +40,8 @@ esac
 
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
+createSymLink $HOME/dotfiles/themes/ ~/.themes
+createSymLink $HOME/dotfiles/gtk-3.0/ ~/.config/gtk-3.0
+createSymLink $HOME/dotfiles/gtk-4.0/ ~/.config/gtk-4.0
 
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
