@@ -4,10 +4,6 @@
       "rev": "ddeab4c",
       "src": "https://github.com/Saghen/blink.cmp"
     },
-    "copilot": {
-      "rev": "da369d9",
-      "src": "https://github.com/github/copilot.vim"
-    },
     "fzf-lua": {
       "rev": "db3ccff",
       "src": "https://github.com/ibhagwan/fzf-lua"

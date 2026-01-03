@@ -111,7 +111,8 @@ return {
       init_params.initializationOptions = config.settings['rust-analyzer']
     end
   end,
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
+	client.server_capabilities.semanticTokensProvider = nil
     vim.api.nvim_buf_create_user_command(bufnr, 'LspCargoReload', function()
       reload_workspace(bufnr)
     end, { desc = 'Reload current cargo workspace' })

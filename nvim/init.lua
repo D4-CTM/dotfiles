@@ -22,6 +22,7 @@ setKey("n", "<leader>w", ":write<CR>")
 setKey("n", "<leader>q", ":quit<CR>")
 setKey("n", "<leader>gb", ":Oil<CR>")
 setKey("n", "<leader>ff", ":FzfLua files<CR>")
+setKey("n", "<leader>fs", ":FzfLua git_status<CR>")
 setKey("n", "<leader>fg", ":FzfLua live_grep<CR>")
 setKey("v", "J", ":m '>+1<CR>gv=gv")
 setKey("v", "K", ":m '<-2<CR>gv=gv")
@@ -45,6 +46,8 @@ end)
 
 vim.lsp.enable({
 	"arduino_language_server",
+	"rust_analyzer",
+	"basedpyright",
 	"omnisharp",
 	"tinymist",
 	"lemminx",
@@ -90,7 +93,6 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp",                name = "blink-cmp" },
 	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim",         name = "gitsigns" },
-	{ src = "https://github.com/nvim-pack/nvim-spectre",          name = "spectre" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
 	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
 	{ src = "https://github.com/navarasu/onedark.nvim",           name = "onedark" },
