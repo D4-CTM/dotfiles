@@ -36,12 +36,16 @@ case $1 in
 		echo "Creating simlinks for gnome"
 		createSymLink $HOME/dotfiles/ulauncher/ ~/.config/ulauncher
 	;;
+	
+	"sway" )
+		echo "Creating symlinks for sway"	
+		createSymLink $HOME/dotfiles/sway/ ~/.config/sway
+		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+		createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
+	;;
 esac
 
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
-createSymLink $HOME/dotfiles/themes/ ~/.themes
-createSymLink $HOME/dotfiles/gtk-3.0/ ~/.config/gtk-3.0
-createSymLink $HOME/dotfiles/gtk-4.0/ ~/.config/gtk-4.0
 
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml

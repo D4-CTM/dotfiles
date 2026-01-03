@@ -1,20 +1,18 @@
 #!/bin/bash
 
-state=""
-acpi_listen | while read -r line; do
-    case "$line" in
-        ac_adapter*)  # only match lines starting with ac_adapter
-			if [[ "$state" == "$line" ]]; then
-				continue
-			fi
+old_state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/state:/ {print $2}')
+while true; do
+	state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/state:/ {print $2}')
 
-            if [[ "$line" == *00000001 ]]; then
-				state="$line"
+	if [[ $old_state != $state ]]; then
+		case "$state" in
+			discharging)
+				paplay ~/dotfiles/sound-theme/stereo/power-unplug.oga
+			;;
+			charging)
                 paplay ~/dotfiles/sound-theme/stereo/power-plug.oga
-            elif [[ "$line" == *00000000 ]]; then
-				state="$line"
-                paplay ~/dotfiles/sound-theme/stereo/power-unplug.oga
-            fi
-            ;;
-    esac
+			;;
+		esac
+		old_state="$state"
+	fi
 done
