@@ -19,6 +19,8 @@ set $browser zen-browser
 set $term kitty
 # Your preferred application launcher
 set $menu wofi --show drun
+# Your preferred file browser
+set $file thunar
 
 ### Output configuration
 #
@@ -83,6 +85,9 @@ input type:touchpad {
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
+
+    # Make the current focus fullscreen
+    bindsym $mod+e exec $file
 
     # shut down the system
     bindsym $mod+shift+p exec poweroff 
