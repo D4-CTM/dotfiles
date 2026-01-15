@@ -99,6 +99,8 @@ return {
           only = source_actions,
         },
       })
+
+	client.server_capabilities.semanticTokensProvider = nil
     end, {})
   end,
 }
