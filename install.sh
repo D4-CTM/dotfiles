@@ -30,18 +30,12 @@ case $1 in
 		echo "Creating symlinks for hyprland"	
 		createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
 		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
-		createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
-	;;
-	"gnome" )
-		echo "Creating simlinks for gnome"
-		createSymLink $HOME/dotfiles/ulauncher/ ~/.config/ulauncher
 	;;
 	
 	"sway" )
 		echo "Creating symlinks for sway"	
 		createSymLink $HOME/dotfiles/sway/ ~/.config/sway
 		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
-		createSymLink $HOME/dotfiles/wofi/ ~/.config/wofi
 	;;
 esac
 
