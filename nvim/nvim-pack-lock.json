@@ -1,47 +1,43 @@
 {
   "plugins": {
     "blink-cmp": {
-      "rev": "ddeab4c",
+      "rev": "fab799d086fd63fa5b389007f63767b23885ebf8",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "fzf-lua": {
-      "rev": "db3ccff",
+      "rev": "b4b1f05957a77f7662de834328827890c1a8c02b",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns": {
-      "rev": "20ad441",
+      "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "lualine": {
-      "rev": "b8c2315",
+      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markview": {
-      "rev": "2f5d568",
+      "rev": "86ce3fe623fe54319a1f1d4ce6b861219c95b151",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason": {
-      "rev": "ad7146a",
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "nvim-treesitter": {
+      "rev": "4967fa48b0fe7a7f92cee546c76bb4bb61bb14d5",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "oil": {
-      "rev": "919e155",
+      "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "onedark": {
-      "rev": "de495fa",
+      "rev": "213c23ae45a04797572242568d5d51937181792d",
       "src": "https://github.com/navarasu/onedark.nvim"
     },
-    "spectre": {
-      "rev": "72f56f7",
-      "src": "https://github.com/nvim-pack/nvim-spectre"
-    },
-    "treesitter": {
-      "rev": "42fc28ba",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
     "typst": {
-      "rev": "64469f8",
+      "rev": "bf5d5eaf23bbfcca9f98a24ed29bd084abf89bf2",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
     }
   }

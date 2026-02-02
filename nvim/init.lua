@@ -44,6 +44,15 @@ vim.keymap.set("n", "<leader>lg", function()
 	end)
 end)
 
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+		if lang then
+			pcall(vim.treesitter.start)
+		end
+	end,
+})
+
 vim.lsp.enable({
 	"arduino_language_server",
 	"rust_analyzer",
@@ -89,24 +98,24 @@ end)
 
 -- packages
 vim.pack.add({
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", name = "treesitter" },
-	{ src = "https://github.com/Saghen/blink.cmp",                name = "blink-cmp" },
-	{ src = "https://github.com/OXY2DEV/markview.nvim",           name = "markview" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim",         name = "gitsigns" },
-	{ src = "https://github.com/nvim-lualine/lualine.nvim",       name = "lualine" },
-	{ src = "https://github.com/ibhagwan/fzf-lua",                name = "fzf-lua" },
-	{ src = "https://github.com/navarasu/onedark.nvim",           name = "onedark" },
-	{ src = "https://github.com/mason-org/mason.nvim",            name = "mason" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim",    name = "typst" },
-	{ src = "https://github.com/stevearc/oil.nvim",               name = "oil" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/Saghen/blink.cmp",               name = "blink-cmp" },
+	{ src = "https://github.com/OXY2DEV/markview.nvim",          name = "markview" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
+	{ src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
+	{ src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
+	{ src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
+	{ src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
+	{ src = "https://github.com/chomosuke/typst-preview.nvim",   name = "typst" },
+	{ src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
 })
+vim.cmd.packadd("nvim-treesitter")
 
 require("mason").setup()
 require("oil").setup()
 require("gitsigns").setup()
-require("markview").setup({
-	lazy = false
-})
+require("markview").setup()
+
 local blink = require("blink.cmp")
 blink.setup({
 	fuzzy = {
@@ -129,21 +138,30 @@ blink.setup({
 	},
 })
 
-require("nvim-treesitter.configs").setup({
-	sync_install = false,
-	ensure_installed = {
-		"lua",
-		"zig",
-		"json",
-		"yaml",
-		"javascript",
-		"typescript",
-	},
-	highlight = { enable = true },
-	indent = { enable = true },
-	auto_install = true,
-	ignore_install = {},
-	modules = {},
+local ts = require("nvim-treesitter")
+ts.install({
+	'dockerfile',
+	'javascript',
+	'typescript',
+	'c_sharp',
+	'arduino',
+	'python',
+	'typst',
+	'java',
+	'html',
+	'yaml',
+	'rust',
+	'css',
+	'xml',
+	'lua',
+	'zig',
+	'cpp',
+	'go',
+	'c'
+}):wait()
+
+ts.setup({
+	install_dir = vim.fn.stdpath('data') .. '/site',
 })
 
 local onedark = require("onedark")
