@@ -57,7 +57,7 @@ vim.lsp.enable({
 	"arduino_language_server",
 	"rust_analyzer",
 	"basedpyright",
-	"omnisharp",
+	"roslyn_ls",
 	"tinymist",
 	"lemminx",
 	"lua_ls",
@@ -111,7 +111,12 @@ vim.pack.add({
 })
 vim.cmd.packadd("nvim-treesitter")
 
-require("mason").setup()
+require("mason").setup({
+    registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+    }
+})
 require("oil").setup()
 require("gitsigns").setup()
 require("markview").setup()
@@ -146,6 +151,7 @@ ts.install({
 	'c_sharp',
 	'arduino',
 	'python',
+	'razor',
 	'typst',
 	'java',
 	'html',
