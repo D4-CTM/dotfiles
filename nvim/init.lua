@@ -57,9 +57,9 @@ vim.lsp.enable({
 	"arduino_language_server",
 	"rust_analyzer",
 	"basedpyright",
-	"roslyn_ls",
 	"tinymist",
 	"lemminx",
+	"roslyn",
 	"lua_ls",
 	"clangd",
 	"cssls",
@@ -98,6 +98,7 @@ end)
 
 -- packages
 vim.pack.add({
+	{ src = "https://github.com/seblyng/roslyn.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/Saghen/blink.cmp",               name = "blink-cmp" },
 	{ src = "https://github.com/OXY2DEV/markview.nvim",          name = "markview" },

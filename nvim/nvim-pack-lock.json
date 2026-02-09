@@ -36,6 +36,10 @@
       "rev": "213c23ae45a04797572242568d5d51937181792d",
       "src": "https://github.com/navarasu/onedark.nvim"
     },
+    "roslyn.nvim": {
+      "rev": "24f7c91ee5e09c63104deaab68f932620f25c24a",
+      "src": "https://github.com/seblyng/roslyn.nvim"
+    },
     "typst": {
       "rev": "bf5d5eaf23bbfcca9f98a24ed29bd084abf89bf2",
       "src": "https://github.com/chomosuke/typst-preview.nvim"
