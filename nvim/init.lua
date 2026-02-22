@@ -3,6 +3,7 @@ vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
 vim.opt.number = true
 
+vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -62,6 +63,7 @@ vim.lsp.enable({
 	"roslyn",
 	"lua_ls",
 	"clangd",
+	"vue_ls",
 	"cssls",
 	"gopls",
 	"jdtls",
@@ -163,6 +165,7 @@ ts.install({
 	'lua',
 	'zig',
 	'cpp',
+	"vue",
 	'go',
 	'c'
 }):wait()
