@@ -41,5 +41,6 @@ esac
 
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
+createSymLink $HOME/dotfiles/tmux.conf ~/.tmux.conf
 
 createSymLink $HOME/dotfiles/starship.toml ~/.config/starship.toml
