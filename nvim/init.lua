@@ -17,8 +17,9 @@ local setKey = vim.keymap.set
 setKey("n", "<leader>zh", ":Gitsigns reset_hunk<CR>")
 setKey("n", "<leader>rh", ":Gitsigns preview_hunk<CR>")
 setKey("n", "<leader>vh", ":Gitsigns preview_hunk_inline<CR>")
-setKey("n", ">h", ":Gitsigns next_hunk<CR>")
-setKey("n", "<h", ":Gitsigns prev_hunk<CR>")
+setKey("n", "<leader>bl", ":Gitsigns blame_line<CR>")
+setKey("n", "]h", ":Gitsigns next_hunk<CR>")
+setKey("n", "[h", ":Gitsigns prev_hunk<CR>")
 setKey("n", "<leader>w", ":write<CR>")
 setKey("n", "<leader>q", ":quit<CR>")
 setKey("n", "<leader>gb", ":Oil<CR>")
@@ -29,21 +30,6 @@ setKey("v", "J", ":m '>+1<CR>gv=gv")
 setKey("v", "K", ":m '<-2<CR>gv=gv")
 setKey("n", "r", ":redo<CR>")
 setKey({ "n", "v" }, "Y", [["+y]])
-
-vim.keymap.set("n", "<leader>lg", function()
-    local fzf = require("fzf-lua")
-
-    vim.ui.input({ prompt = "Input file pattern: " }, function(input)
-        if input == nil or input == "" then
-            vim.notify("File extension was empty", vim.log.levels.ERROR)
-            return
-        end
-
-        fzf.live_grep({
-            rg_opts = string.format("--glob %s", input)
-        })
-    end)
-end)
 
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
@@ -56,9 +42,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.lsp.enable({
     "arduino_language_server",
-    "rust_analyzer",
     "basedpyright",
-    "tinymist",
     "lemminx",
     "roslyn",
     "lua_ls",
@@ -73,29 +57,12 @@ vim.lsp.enable({
 })
 
 setKey("n", "F", vim.lsp.buf.format)
-setKey("n", "<leader>d", vim.diagnostic.open_float)
-setKey("n", "<leader>gd", vim.lsp.buf.definition)
-setKey("n", "?", vim.lsp.buf.hover)
 
-local function jump(_count, _severity)
-    if _severity == nil then
-        vim.diagnostic.jump({ count = _count, float = true, wrap = true })
-        return
-    end
-    vim.diagnostic.jump({ count = _count, float = true, wrap = true, severity = _severity })
-end
-
-setKey("n", "<e", function()
-    jump(-1, vim.diagnostic.severity.ERROR)
+setKey("n", "[e", function()
+    vim.diagnostic.jump({ count = -1, float = true, wrap = true, severity = vim.diagnostic.severity.ERROR })
 end)
-setKey("n", ">e", function()
-    jump(1, vim.diagnostic.severity.ERROR)
-end)
-setKey("n", "<d", function()
-    jump(-1, nil)
-end)
-setKey("n", ">d", function()
-    jump(1, nil)
+setKey("n", "]e", function()
+    vim.diagnostic.jump({ count = 1, float = true, wrap = true, severity = vim.diagnostic.severity.ERROR })
 end)
 
 -- packages
@@ -137,11 +104,8 @@ ts.install({
     'arduino',
     'python',
     'razor',
-    'typst',
     'java',
     'html',
-    'yaml',
-    'rust',
     'css',
     'xml',
     'lua',
@@ -170,8 +134,4 @@ onedark.setup({
 })
 onedark.load()
 
-require("lualine").setup({
-    options = {
-        theme = "onedark",
-    },
-})
+require("lualine").setup({})
