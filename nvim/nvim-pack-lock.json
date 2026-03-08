@@ -1,8 +1,8 @@
 {
   "plugins": {
-    "blink-cmp": {
-      "rev": "fab799d086fd63fa5b389007f63767b23885ebf8",
-      "src": "https://github.com/Saghen/blink.cmp"
+    "copilot": {
+      "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
+      "src": "https://github.com/github/copilot.vim"
     },
     "fzf-lua": {
       "rev": "b4b1f05957a77f7662de834328827890c1a8c02b",
@@ -23,6 +23,14 @@
     "mason": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini-cmp": {
+      "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
+      "src": "https://github.com/nvim-mini/mini.completion"
+    },
+    "mini-icons": {
+      "rev": "5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e",
+      "src": "https://github.com/nvim-mini/mini.icons"
     },
     "nvim-treesitter": {
       "rev": "4967fa48b0fe7a7f92cee546c76bb4bb61bb14d5",
