@@ -52,7 +52,9 @@ vim.lsp.enable({
     "gopls",
     "jdtls",
     "ts_ls",
+    "sqls",
     "html",
+    "ols",
     "zls"
 })
 
@@ -73,7 +75,7 @@ vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
-    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
+    -- { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
     { src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
@@ -93,7 +95,12 @@ require("gitsigns").setup()
 require("markview").setup()
 
 require("mini.completion").setup()
-require("mini.icons").setup()
+require("mini.icons").setup({
+    extension = {
+        hpp = { glyph = '𝗛', hl = 'MiniIconsPurple' },
+        h = { glyph = '𝗛', hl = 'MiniIconsPurple' },
+    },
+})
 
 local ts = require("nvim-treesitter")
 ts.install({
@@ -106,9 +113,11 @@ ts.install({
     'razor',
     'java',
     'html',
+    'odin',
     'css',
     'xml',
     'lua',
+    'sql',
     'zig',
     'cpp',
     "vue",

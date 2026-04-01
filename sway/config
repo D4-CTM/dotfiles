@@ -198,6 +198,10 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+# Floating Windows
+#
+for_window [title="^flt_.*"] floating enable
+
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
