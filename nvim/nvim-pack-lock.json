@@ -4,6 +4,10 @@
       "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
       "src": "https://github.com/github/copilot.vim"
     },
+    "diagram": {
+      "rev": "89d8110ec15021ac9a03ff2317d27b900c45bf60",
+      "src": "https://github.com/3rd/diagram.nvim"
+    },
     "fzf-lua": {
       "rev": "b4b1f05957a77f7662de834328827890c1a8c02b",
       "src": "https://github.com/ibhagwan/fzf-lua"
@@ -12,9 +16,17 @@
       "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "image": {
+      "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
+      "src": "https://github.com/3rd/image.nvim"
+    },
     "lualine": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "markdown_preview": {
+      "rev": "29234edae5b8b7db5ae05061ff7197f95ef0ffd5",
+      "src": "https://github.com/selimacerbas/markdown-preview.nvim"
     },
     "markview": {
       "rev": "86ce3fe623fe54319a1f1d4ce6b861219c95b151",
@@ -24,6 +36,10 @@
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
     },
+    "md-preview": {
+      "rev": "29234edae5b8b7db5ae05061ff7197f95ef0ffd5",
+      "src": "https://github.com/selimacerbas/markdown-preview.nvim"
+    },
     "mini-cmp": {
       "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
       "src": "https://github.com/nvim-mini/mini.completion"
@@ -31,6 +47,10 @@
     "mini-icons": {
       "rev": "5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e",
       "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "nvim-lspconfig": {
+      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
       "rev": "4967fa48b0fe7a7f92cee546c76bb4bb61bb14d5",

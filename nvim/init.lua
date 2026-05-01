@@ -23,7 +23,8 @@ setKey("n", "[h", ":Gitsigns prev_hunk<CR>")
 setKey("n", "<leader>w", ":write<CR>")
 setKey("n", "<leader>q", ":quit<CR>")
 setKey("n", "<leader>gb", ":Oil<CR>")
-setKey("n", "<leader>ff", ":FzfLua files<CR>")
+setKey("n", "<leader>ff", ":FzfLua git_files<CR>")
+setKey("n", "<leader>fF", ":FzfLua git_files<CR>")
 setKey("n", "<leader>fs", ":FzfLua git_status<CR>")
 setKey("n", "<leader>fg", ":FzfLua live_grep<CR>")
 setKey("v", "J", ":m '>+1<CR>gv=gv")
@@ -43,7 +44,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.lsp.enable({
     "arduino_language_server",
     "basedpyright",
+    "elixirls",
     "lemminx",
+    "fortls",
     "roslyn",
     "lua_ls",
     "clangd",
@@ -55,6 +58,7 @@ vim.lsp.enable({
     "sqls",
     "html",
     "ols",
+    "hls",
     "zls"
 })
 
@@ -69,15 +73,18 @@ end)
 
 -- packages
 vim.pack.add({
-    { src = "https://github.com/nvim-mini/mini.completion",      name = "mini-cmp" },
+    { src = "https://github.com/neovim/nvim-lspconfig",          name = "nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.icons",           name = "mini-icons" },
+    { src = "https://github.com/nvim-mini/mini.completion",      name = "mini-cmp" },
     { src = "https://github.com/OXY2DEV/markview.nvim",          name = "markview" },
     { src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
+    { src = "https://github.com/3rd/diagram.nvim",               name = "diagram" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
     -- { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
+    { src = "https://github.com/3rd/image.nvim",                 name = "image" },
     { src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/seblyng/roslyn.nvim" },
@@ -90,6 +97,7 @@ require("mason").setup({
         "github:Crashdummyy/mason-registry",
     }
 })
+
 require("oil").setup()
 require("gitsigns").setup()
 require("markview").setup()
@@ -109,6 +117,9 @@ ts.install({
     'typescript',
     'c_sharp',
     'arduino',
+    'fortran',
+    'haskell',
+    'elixir',
     'python',
     'razor',
     'java',
@@ -143,4 +154,48 @@ onedark.setup({
 })
 onedark.load()
 
+require('mini.completion').setup({
+    lsp_completion = {
+        source_func = 'omnifunc',
+        auto_setup = true
+    },
+})
+
 require("lualine").setup({})
+
+require('image').setup({
+    integrations = {
+        markdown = {
+            resolve_image_path = function(document_path, image_path, fallback)
+                -- document_path is the path to the file that contains the image
+                -- image_path is the potentially relative path to the image. for
+                -- markdown it's `![](this text)`
+
+                -- you can call the fallback function to get the default behavior
+                return fallback(document_path, image_path)
+            end,
+        }
+    }
+})
+
+require("diagram").setup({
+    integrations = {
+        require("diagram.integrations.markdown"),
+        require("diagram.integrations.neorg"),
+    },
+    renderer_options = {
+        mermaid = {
+            theme = "forest",
+        },
+        plantuml = {
+            charset = "utf-8",
+        },
+        d2 = {
+            theme_id = 1,
+        },
+        gnuplot = {
+            theme = "dark",
+            size = "800,600",
+        },
+    },
+})
