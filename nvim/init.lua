@@ -45,6 +45,7 @@ vim.lsp.enable({
     "arduino_language_server",
     "basedpyright",
     "elixirls",
+    "tinymist",
     "lemminx",
     "fortls",
     "roslyn",
@@ -81,7 +82,7 @@ vim.pack.add({
     { src = "https://github.com/3rd/diagram.nvim",               name = "diagram" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
-    -- { src = "https://github.com/github/copilot.vim",             name = "copilot" },
+    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
     { src = "https://github.com/3rd/image.nvim",                 name = "image" },
@@ -121,6 +122,7 @@ ts.install({
     'haskell',
     'elixir',
     'python',
+    'typst',
     'razor',
     'java',
     'html',
@@ -199,3 +201,5 @@ require("diagram").setup({
         },
     },
 })
+
+vim.g.copilot_enabled = false
