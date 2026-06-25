@@ -13,6 +13,7 @@ vim.g.have_nerd_font = true
 vim.g.mapleader = " "
 
 -- remaps
+local opts = { noremap = true, silent = true }
 local setKey = vim.keymap.set
 setKey("n", "<leader>zh", ":Gitsigns reset_hunk<CR>")
 setKey("n", "<leader>rh", ":Gitsigns preview_hunk<CR>")
@@ -27,6 +28,8 @@ setKey("n", "<leader>ff", ":FzfLua git_files<CR>")
 setKey("n", "<leader>fF", ":FzfLua git_files<CR>")
 setKey("n", "<leader>fs", ":FzfLua git_status<CR>")
 setKey("n", "<leader>fg", ":FzfLua live_grep<CR>")
+setKey('n', '<leader>gd', vim.lsp.buf.definition, opts)
+setKey('n', '<leader>gD', vim.lsp.buf.declaration, opts)
 setKey("v", "J", ":m '>+1<CR>gv=gv")
 setKey("v", "K", ":m '<-2<CR>gv=gv")
 setKey("n", "r", ":redo<CR>")
@@ -79,13 +82,11 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.completion",      name = "mini-cmp" },
     { src = "https://github.com/OXY2DEV/markview.nvim",          name = "markview" },
     { src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
-    { src = "https://github.com/3rd/diagram.nvim",               name = "diagram" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
     { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
-    { src = "https://github.com/3rd/image.nvim",                 name = "image" },
     { src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/seblyng/roslyn.nvim" },
@@ -164,42 +165,5 @@ require('mini.completion').setup({
 })
 
 require("lualine").setup({})
-
-require('image').setup({
-    integrations = {
-        markdown = {
-            resolve_image_path = function(document_path, image_path, fallback)
-                -- document_path is the path to the file that contains the image
-                -- image_path is the potentially relative path to the image. for
-                -- markdown it's `![](this text)`
-
-                -- you can call the fallback function to get the default behavior
-                return fallback(document_path, image_path)
-            end,
-        }
-    }
-})
-
-require("diagram").setup({
-    integrations = {
-        require("diagram.integrations.markdown"),
-        require("diagram.integrations.neorg"),
-    },
-    renderer_options = {
-        mermaid = {
-            theme = "forest",
-        },
-        plantuml = {
-            charset = "utf-8",
-        },
-        d2 = {
-            theme_id = 1,
-        },
-        gnuplot = {
-            theme = "dark",
-            size = "800,600",
-        },
-    },
-})
 
 vim.g.copilot_enabled = false
