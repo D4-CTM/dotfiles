@@ -14,7 +14,6 @@
     "spacing": 4,
     "modules-right": [
         "tray",
-        "network#spd",
         "wireplumber",
         "network",
         "backlight",
@@ -124,19 +123,13 @@
             ]
         }
     },
-    "network#spd": {
-        "interval": 1,
-        "format": "{ifname}",
-        "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes}",
-        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes}"
-    },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "󰂄 {capacity}%",
+        "format-charging": "󱟦 {capacity}%",
         "format-pluged": "󱟦 {capacity}%",
         "format-full": "󰁹 {capacity}%",
         "format-icons": [
@@ -149,7 +142,7 @@
             "󰁿",
             "󰂀",
             "󰂁",
-            "󰂂",
+            "󰁹",
             "󰁹"
         ]
     }

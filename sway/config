@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Internet browser
-set $browser brave
+set $browser flatpak run com.brave.Browser --ozone-platform=wayland
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher

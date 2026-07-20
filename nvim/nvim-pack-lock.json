@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "copilot": {
-      "rev": "a12fd5672110c8aa7e3c8419e28c96943ca179be",
-      "src": "https://github.com/github/copilot.vim"
-    },
     "diagram": {
       "rev": "89d8110ec15021ac9a03ff2317d27b900c45bf60",
       "src": "https://github.com/3rd/diagram.nvim"
@@ -47,10 +43,6 @@
     "mini-icons": {
       "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
       "src": "https://github.com/nvim-mini/mini.icons"
-    },
-    "nvim-lspconfig": {
-      "rev": "229b79051b380377664edc4cbd534930154921a1",
-      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",

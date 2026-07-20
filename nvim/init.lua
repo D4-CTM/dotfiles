@@ -45,24 +45,17 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.lsp.enable({
-    "arduino_language_server",
     "basedpyright",
-    "elixirls",
     "tinymist",
     "lemminx",
-    "fortls",
     "roslyn",
     "lua_ls",
     "clangd",
     "vue_ls",
     "cssls",
     "gopls",
-    "jdtls",
     "ts_ls",
-    "sqls",
     "html",
-    "ols",
-    "hls",
     "zls"
 })
 
@@ -77,14 +70,13 @@ end)
 
 -- packages
 vim.pack.add({
-    { src = "https://github.com/neovim/nvim-lspconfig",          name = "nvim-lspconfig" },
     { src = "https://github.com/nvim-mini/mini.icons",           name = "mini-icons" },
     { src = "https://github.com/nvim-mini/mini.completion",      name = "mini-cmp" },
     { src = "https://github.com/OXY2DEV/markview.nvim",          name = "markview" },
     { src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
-    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
+--    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
     { src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
@@ -166,4 +158,4 @@ require('mini.completion').setup({
 
 require("lualine").setup({})
 
-vim.g.copilot_enabled = false
+-- vim.g.copilot_enabled = false
