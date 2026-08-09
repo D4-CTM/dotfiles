@@ -200,7 +200,7 @@ mode "resize" {
 
 # Floating Windows
 #
-for_window [title="^flt_.*"] floating enable
+for_window [title="^\[flt\].*"] floating enable
 
 # Utilities:
 #

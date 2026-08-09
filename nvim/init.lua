@@ -28,8 +28,10 @@ setKey("n", "<leader>ff", ":FzfLua git_files<CR>")
 setKey("n", "<leader>fF", ":FzfLua git_files<CR>")
 setKey("n", "<leader>fs", ":FzfLua git_status<CR>")
 setKey("n", "<leader>fg", ":FzfLua live_grep<CR>")
+setKey("n", "<leader>r", ":lsp restart<CR>")
 setKey('n', '<leader>gd', vim.lsp.buf.definition, opts)
 setKey('n', '<leader>gD', vim.lsp.buf.declaration, opts)
+setKey("n", "<leader>mf", ":make<CR>")
 setKey("v", "J", ":m '>+1<CR>gv=gv")
 setKey("v", "K", ":m '<-2<CR>gv=gv")
 setKey("n", "r", ":redo<CR>")
@@ -110,16 +112,13 @@ ts.install({
     'javascript',
     'typescript',
     'c_sharp',
-    'arduino',
-    'fortran',
-    'haskell',
-    'elixir',
     'python',
     'typst',
     'razor',
     'java',
     'html',
-    'odin',
+    'yaml',
+    'json',
     'css',
     'xml',
     'lua',
