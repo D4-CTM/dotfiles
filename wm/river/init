@@ -1,0 +1,113 @@
+#!/bin/sh
+
+#
+# Aliases
+#
+mod="Mod4"
+touchpad="pointer-1267-12584-ASUE1301:00_04F3:3128_Touchpad"
+
+#
+# -- Init --
+#
+dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS SSH_AUTH_SOCK
+
+riverctl default-layout rivertile
+
+pgrep -x pipewire > /dev/null || {
+	riverctl spawn pipewire
+	sleep 0.5
+}
+
+pgrep -x wireplumber > /dev/null ||
+	riverctl spawn wireplumber
+
+pgrep -x pipewire-pulse > /dev/null ||
+	riverctl spawn pipewire-pulse
+
+pgrep -x rivertile > /dev/null ||
+	riverctl spawn "rivertile -view-padding 6 -outer-padding 6"
+
+pgrep -x wbg > /dev/null || 
+    riverctl spawn "wbg /home/joush/dotfiles/background/OurSixBG.png"
+
+pgrep -x mako > /dev/null || 
+    riverctl spawn "mako"
+
+pgrep -x yambar > /dev/null || 
+    riverctl spawn yambar
+
+#
+# -- Application commands --
+#
+riverctl map normal $mod Return spawn kitty
+riverctl map normal $mod B spawn "flatpak run io.gitlab.librewolf-community"
+riverctl map normal $mod E spawn Thunar
+riverctl map normal $mod R spawn fuzzel
+
+#
+# -- Control commands --
+#
+riverctl map normal $mod W close
+riverctl map normal $mod+Shift E exit
+riverctl map normal $mod+Shift R spawn "pkill yambar && sh ~/.config/river/init"
+
+riverctl map normal None XF86AudioRaiseVolume spawn "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"
+riverctl map normal None XF86AudioLowerVolume spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+riverctl map normal None XF86AudioMute spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+riverctl map normal None XF86AudioMicMute spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+#
+# -- Screenshot support --
+#
+
+# Screenshot full screen
+riverctl map normal None Print spawn 'grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png'
+
+# Screenshot a selected region, copy to clipboard
+riverctl map normal None F1 spawn 'grim -g "$(slurp)" - | wl-copy'
+
+# Or: region screenshot saved to file
+riverctl map normal $mod F1 spawn 'grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png'
+
+#
+# -- Tap To Click --
+#
+riverctl input $touchpad tap enabled
+riverctl input $touchpad natural-scroll enabled
+riverctl input $touchpad accel-profile adaptive
+
+for i in $(seq 1 9); do
+    tagmask=$((1 << (i - 1)))
+
+    # Switch to tag (view that "desktop")
+    riverctl map normal $mod $i set-focused-tags $tagmask
+
+    # Move focused window to tag
+    riverctl map normal $mod+Shift $i set-view-tags $tagmask
+
+    # Toggle tag on current view (also show it)
+    riverctl map normal $mod+Control $i toggle-focused-tags $tagmask
+done
+
+riverctl map normal $mod Tab focus-previous-tags
+riverctl map normal $mod+Shift Tab focus-next-tags
+
+#
+# --- Basic window management ---
+#
+riverctl map normal $mod Left focus-view next
+riverctl map normal $mod Right focus-view previous
+riverctl map normal $mod+Shift Return zoom
+
+riverctl map normal $mod F toggle-fullscreen
+
+#
+# Start with tag 1 focused
+#
+riverctl set-focused-tags 1
+riverctl focus-follows-cursor normal
+
+riverctl set-cursor-warp on-focus-change
+riverctl spawn "notify-send \"Config loaded\""
+
+exit 0

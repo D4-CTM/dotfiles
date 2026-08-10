@@ -119,6 +119,7 @@ ts.install({
     'html',
     'yaml',
     'json',
+    'bash',
     'css',
     'xml',
     'lua',

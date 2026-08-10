@@ -1,0 +1,130 @@
+bar:
+  location: top
+  height: 26
+  background: 1e1e2eff
+  font: "JetBrainsMono Nerd Font:size=18"
+
+  right:
+    - pipewire:
+        content:
+          list:
+            items:
+              - map:
+                  conditions:
+                    type == "sink":
+                      map:
+                        default:
+                          string:
+                            text: "  {linear_volume}%"
+                            right-margin: 14
+                        conditions:
+                          muted:
+                            string:
+                              text: "  muted"
+                              right-margin: 14
+                    type == "source": {empty: {}}
+
+    - network:
+        content:
+          map:
+            default: {empty: {}}
+            conditions:
+              name == wlp2s0:
+                map:
+                  default:
+                    string:
+                      text: "  {ssid}"
+                      right-margin: 12
+                  conditions:
+                    state == down:
+                      string:
+                        text: " disconnected"
+                        right-margin: 14
+                    state == "not present":
+                      string:
+                        text: " no adapter"
+                        right-margin: 14
+
+    - battery:
+        name: BAT0
+        poll-interval: 30000
+        content:
+          map:
+            default:
+              string:
+                text: "  {capacity}%"
+                right-margin: 12
+            conditions:
+              state == charging:
+                string:
+                  text: " {capacity}%"
+                  right-margin: 12
+              state == full:
+                string:
+                  text: " {capacity}%"
+                  right-margin: 12
+              capacity <= 15:
+                string:
+                  text: "  {capacity}% CRITICAL"
+                  right-margin: 12
+                  foreground: ff0000ff
+
+  center:
+    - clock:
+        time-format: "%H:%M:%S"
+        date-format: "%Y-%m-%d"
+        content:
+          string:
+            text: "{time} {date}"
+
+  left:
+    - river:
+        content:
+          map:
+            conditions:
+              ~occupied && ~focused:
+                empty: {}
+              state == focused:
+                string:
+                  text: " {id} "
+                  foreground: 1e1e2eff
+                  deco:
+                    background: {color: 89b4faff}
+              state == unfocused:
+                string:
+                  text: " {id} "
+                  foreground: cdd6f4ff
+              state == invisible:
+                string:
+                  text: " {id} "
+                  foreground: 6c7086ff
+
+    - script:
+        path: /home/joush/dotfiles/scripts/mem_usage.sh
+        args: []
+        poll-interval: 5000
+        content:
+          string:
+            text: "⇄ {used}/{total} GiB"
+            left-margin: 12
+            right-margin: 12
+            on-click: "kitty btop"
+
+    - script:
+        path: /home/joush/dotfiles/scripts/diskfree.sh
+        args: []
+        poll-interval: 30000
+        content:
+          string:
+            text: " {output}"
+            right-margin: 12
+    - cpu:
+        poll-interval: 2500
+        content:
+          map:
+            conditions:
+              id < 0:
+                list:
+                  items:
+                    - string:
+                        text: " {cpu}%"

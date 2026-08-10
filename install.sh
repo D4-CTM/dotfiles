@@ -27,15 +27,21 @@ function createSymLink {
 
 case $1 in
 	"hypr" )
-		echo "Creating symlinks for hyprland"	
-		createSymLink $HOME/dotfiles/hypr/ ~/.config/hypr
-		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+		echo "Creating symlinks for $1"	
+		createSymLink $HOME/dotfiles/wm/hypr/ ~/.config/hypr
+		createSymLink $HOME/dotfiles/wm/waybar/ ~/.config/waybar
 	;;
 	
 	"sway" )
-		echo "Creating symlinks for sway"	
-		createSymLink $HOME/dotfiles/sway/ ~/.config/sway
-		createSymLink $HOME/dotfiles/waybar/ ~/.config/waybar
+		echo "Creating symlinks for $1"	
+		createSymLink $HOME/dotfiles/wm/sway/ ~/.config/sway
+		createSymLink $HOME/dotfiles/wm/waybar/ ~/.config/waybar
+	;;
+
+	"river" )
+		echo "Creating symlinks for $1"	
+		createSymLink $HOME/dotfiles/wm/river/ ~/.config/river
+		createSymLink $HOME/dotfiles/wm/yambar/ ~/.config/yambar
 	;;
 esac
 
