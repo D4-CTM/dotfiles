@@ -42,6 +42,7 @@ case $1 in
 		echo "Creating symlinks for $1"	
 		createSymLink $HOME/dotfiles/wm/river/ ~/.config/river
 		createSymLink $HOME/dotfiles/wm/yambar/ ~/.config/yambar
+		createSymLink $HOME/dotfiles/wm/mako/ ~/.config/mako
 	;;
 esac
 

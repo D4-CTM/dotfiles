@@ -29,7 +29,7 @@ bar:
           map:
             default: {empty: {}}
             conditions:
-              name == wlp2s0:
+              name == wlp0s20f3:
                 map:
                   default:
                     string:

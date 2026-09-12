@@ -87,6 +87,9 @@ vim.pack.add({
 })
 vim.cmd.packadd("nvim-treesitter")
 
+--
+-- :MasonInstall clangd basedpyright css-lsp html-lsp lemminx lua-language-server roslyn typescript-language-server vue-language-server zls
+--
 require("mason").setup({
     registries = {
         "github:mason-org/mason-registry",
@@ -98,7 +101,13 @@ require("oil").setup()
 require("gitsigns").setup()
 require("markview").setup()
 
-require("mini.completion").setup()
+require('mini.completion').setup({
+    lsp_completion = {
+        source_func = 'omnifunc',
+        auto_setup = true
+    },
+})
+
 require("mini.icons").setup({
     extension = {
         hpp = { glyph = '𝗛', hl = 'MiniIconsPurple' },
@@ -148,13 +157,6 @@ onedark.setup({
     },
 })
 onedark.load()
-
-require('mini.completion').setup({
-    lsp_completion = {
-        source_func = 'omnifunc',
-        auto_setup = true
-    },
-})
 
 require("lualine").setup({})
 
