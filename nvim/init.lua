@@ -53,7 +53,6 @@ vim.lsp.enable({
     "roslyn",
     "lua_ls",
     "clangd",
-    "vue_ls",
     "cssls",
     "gopls",
     "ts_ls",
@@ -88,7 +87,7 @@ vim.pack.add({
 vim.cmd.packadd("nvim-treesitter")
 
 --
--- :MasonInstall clangd basedpyright css-lsp html-lsp lemminx lua-language-server roslyn typescript-language-server vue-language-server zls
+-- :MasonInstall clangd basedpyright css-lsp html-lsp lemminx lua-language-server roslyn typescript-language-server zls
 --
 require("mason").setup({
     registries = {

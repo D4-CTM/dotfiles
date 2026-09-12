@@ -1,5 +1,9 @@
 #!/bin/bash
 
+mkdir -p ~/.config/
+mkdir -p ~/.local/share/fonts/
+mkdir -p ~/.local/share/icons/
+
 function createSymLink {
 	if [[ -L "$2" ]]; then
 		echo "$2 is already a symlink"
@@ -23,13 +27,12 @@ function createSymLink {
 	ln -s "$1" "$2"
 }
 
-
-
 case $1 in
 	"hypr" )
 		echo "Creating symlinks for $1"	
 		createSymLink $HOME/dotfiles/wm/hypr/ ~/.config/hypr
 		createSymLink $HOME/dotfiles/wm/waybar/ ~/.config/waybar
+		createSymLink $HOME/dotfiles/wm/mako/ ~/.config/mako
 	;;
 	
 	"sway" )
@@ -46,6 +49,8 @@ case $1 in
 	;;
 esac
 
+createSymLink /home/joush/dotfiles/themes/font/ ~/.local/share/fonts
+createSymLink /home/joush/dotfiles/themes/cursor/ ~/.local/share/icons
 createSymLink $HOME/dotfiles/nvim/ ~/.config/nvim
 createSymLink $HOME/dotfiles/kitty/ ~/.config/kitty
 createSymLink $HOME/dotfiles/tmux.conf ~/.tmux.conf

@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": [
         "custom/launcher",
-        "sway/workspaces",
+        "hyprland/workspaces",
         "cpu",
         "memory",
         "disk"
@@ -26,7 +26,7 @@
     "format-icons": ["", ""]
     },
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
         "persistent-workspaces": {
             "1": [],
             "2": [],
