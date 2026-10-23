@@ -11,6 +11,7 @@ vim.o.wrap = false
 
 vim.g.have_nerd_font = true
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- remaps
 local opts = { noremap = true, silent = true }
@@ -53,6 +54,7 @@ vim.lsp.enable({
     "roslyn",
     "lua_ls",
     "clangd",
+    "dartls",
     "cssls",
     "gopls",
     "ts_ls",
@@ -77,7 +79,8 @@ vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim",        name = "gitsigns" },
     { src = "https://github.com/nvim-lualine/lualine.nvim",      name = "lualine" },
     { src = "https://github.com/navarasu/onedark.nvim",          name = "onedark" },
---    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
+    { src = 'https://github.com/MagicDuck/grug-far.nvim',        name = "grug-far" },
+    --    { src = "https://github.com/github/copilot.vim",             name = "copilot" },
     { src = "https://github.com/ibhagwan/fzf-lua",               name = "fzf-lua" },
     { src = "https://github.com/mason-org/mason.nvim",           name = "mason" },
     { src = "https://github.com/stevearc/oil.nvim",              name = "oil" },
@@ -85,6 +88,11 @@ vim.pack.add({
     { src = "https://github.com/seblyng/roslyn.nvim" },
 })
 vim.cmd.packadd("nvim-treesitter")
+
+require('grug-far').setup({
+})
+
+vim.keymap.set('n', '<leader>gf', '<cmd>GrugFar<CR>', { desc = 'Search and Replace' })
 
 --
 -- :MasonInstall clangd basedpyright css-lsp html-lsp lemminx lua-language-server roslyn typescript-language-server zls
@@ -124,6 +132,7 @@ ts.install({
     'typst',
     'razor',
     'java',
+    'dart',
     'html',
     'yaml',
     'json',

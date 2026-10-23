@@ -8,6 +8,10 @@
       "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "grug-far": {
+      "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
+      "src": "https://github.com/MagicDuck/grug-far.nvim"
+    },
     "lualine": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -43,6 +47,10 @@
     "roslyn.nvim": {
       "rev": "de9a98d61ed3fd01b5016eea5fe9e32f1a4c7cfb",
       "src": "https://github.com/seblyng/roslyn.nvim"
+    },
+    "spectre": {
+      "rev": "72f56f7585903cd7bf92c665351aa585e150af0f",
+      "src": "https://github.com/nvim-pack/nvim-spectre"
     }
   }
 }

@@ -36,7 +36,7 @@ local menu        = "fuzzel"
 hl.on("hyprland.start", function()
     hl.exec_cmd(os.getenv("HOME") .. "/dotfiles/scripts/low_battery_warning.sh")
     hl.exec_cmd(os.getenv("HOME") .. "/dotfiles/scripts/plugged_battery.sh")
-    hl.exec_cmd("swaybg -i /home/joush/dotfiles/background/OurSixBG.png")
+    hl.exec_cmd("swaybg -i /home/joush/dotfiles/background/wp.jpeg")
     hl.exec_cmd("hyprctl setcursor 'Wii Pointer' 24")
     hl.exec_cmd("waybar")
     hl.exec_cmd("udiskie")
@@ -284,6 +284,21 @@ hl.window_rule({
     name = "floating-prefix",
     match = { class = "^[flt].*", title = "^[flt].*" },
     float = true,
+})
+
+----------------------
+---- Citrix rules ----
+----------------------
+hl.window_rule({
+    name       = "citrix-workspace",
+    match      = { class = "^(wfica)$" },
+    workspace  = "5",
+})
+
+hl.window_rule({
+    name       = "citrix-fullscreen",
+    match      = { class = "^(wfica)$" },
+    fullscreen = true,
 })
 
 -- Ignore maximize requests from apps. You'll probably like this.

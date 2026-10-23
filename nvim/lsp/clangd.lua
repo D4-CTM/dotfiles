@@ -80,6 +80,9 @@ return {
 		},
 		offsetEncoding = { 'utf-8', 'utf-16' },
 	},
+    init_options = {
+        fallbackFlags = {'--std=c++20'}
+    },
 	---@param client vim.lsp.Client
 	---@param init_result ClangdInitializeResult
 	on_init = function(client, init_result)
