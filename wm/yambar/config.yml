@@ -116,8 +116,9 @@ bar:
         poll-interval: 30000
         content:
           string:
-            text: " {output}"
+            text: " {root}  🖴 {games}"
             right-margin: 12
+
     - cpu:
         poll-interval: 2500
         content:

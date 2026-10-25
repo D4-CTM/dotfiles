@@ -10,6 +10,7 @@ touchpad="pointer-1160-4162-VEN_0488:00_0488:1042_Touchpad"
 # -- Init --
 #
 dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS SSH_AUTH_SOCK
+gnome-keyring-daemon --start --components=secrets >/dev/null
 
 riverctl default-layout rivertile
 
@@ -31,7 +32,7 @@ pgrep -x rivertile > /dev/null ||
 	riverctl spawn "rivertile -view-padding 6 -outer-padding 6"
 
 pgrep -x wbg > /dev/null || 
-    riverctl spawn "wbg /home/joush/dotfiles/background/OurSixBG.png"
+    riverctl spawn "wbg -s /home/joush/dotfiles/background/wp.jpeg"
 
 pgrep -x mako > /dev/null || 
     riverctl spawn "mako"
